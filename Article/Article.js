@@ -88,7 +88,7 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* **Complete** Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -103,9 +103,9 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  **Complete** Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+  **Complete** Step 3: return the entire component.
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
@@ -113,40 +113,52 @@ const data = [
 
 */
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
-
+// create elements
 let panel = document.createElement('div');
 let panelTitle = document.createElement('h2');
 let panelDate = document.createElement('p');
-let panelContent = document.createElement('p');
+let panelContent_1 = document.createElement('p');
+let panelContent_2 = document.createElement('p');
+let panelContent_3 = document.createElement('p');
 let panelSpan = document.createElement('span');
 
+// add elements to the parent
 panel.appendChild(panelTitle);
 panel.appendChild(panelDate);
-panel.appendChild(panelContent);
+panel.appendChild(panelContent_1);
+panel.appendChild(panelContent_2);
+panel.appendChild(panelContent_3);
 panel.appendChild(panelSpan);
 
+// link to parameters in the function
 panelTitle.textContent = title;
 panelDate.textContent = date;
-panelContent.textContent = firstParagraph;
-//panelContent.textContent = secondParagraph;
-//panelContent.textContent = thirdParagraph;
+panelContent_1.textContent = firstParagraph;
+panelContent_2.textContent = secondParagraph;
+panelContent_3.textContent = thirdParagraph;
 
+// Add message for more content
+panelSpan.textContent = "Click here to read this article!";
 
+// Add classlist to sections
 panel.classList.add('article');
-panelTitle.classList.add('date');
-panelContent.classList.add('expandButton');
-panelSpan.classList.add('article-open');
+panelDate.classList.add('date');
+panelSpan.classList.add('expandButton');
 
-panelSpan.addEventListener('click', () => {
-  panelSpan.classList.toggle('toggle-on');
-})
+// Add click/toggle effect for content
+panel.addEventListener('click', () => {
+  panel.classList.toggle('article-open');
+});
 
+// return the whole component
 return panel;
 
 };
 
+// set input data array
 const parent = document.querySelector('.articles');
 data.forEach(data => {
   const newData = createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
   parent.appendChild(newData);
-})
+});
+
