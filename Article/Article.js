@@ -114,14 +114,39 @@ const data = [
 */
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 
-}
-let myArticle = document.createElement('div');
-let myH2 = document.createElement('h2');
-let myP = document.createElement('p');
-let myButton = document.createElement('button');
+let panel = document.createElement('div');
+let panelTitle = document.createElement('h2');
+let panelDate = document.createElement('p');
+let panelContent = document.createElement('p');
+let panelSpan = document.createElement('span');
 
-myArticle.classList.add('article');
-myP.classList.add('date');
-myButton.classList.add('expandButton');
+panel.appendChild(panelTitle);
+panel.appendChild(panelDate);
+panel.appendChild(panelContent);
+panel.appendChild(panelSpan);
+
+panelTitle.textContent = title;
+panelDate.textContent = date;
+panelContent.textContent = firstParagraph;
+//panelContent.textContent = secondParagraph;
+//panelContent.textContent = thirdParagraph;
 
 
+panel.classList.add('article');
+panelTitle.classList.add('date');
+panelContent.classList.add('expandButton');
+panelSpan.classList.add('article-open');
+
+panelSpan.addEventListener('click', () => {
+  panelSpan.classList.toggle('toggle-on');
+})
+
+return panel;
+
+};
+
+const parent = document.querySelector('.articles');
+data.forEach(data => {
+  const newData = createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
+  parent.appendChild(newData);
+})
