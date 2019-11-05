@@ -162,3 +162,13 @@ data.forEach(data => {
   parent.appendChild(newData);
 });
 
+// map array to make new articles
+const newComponents = data.map((item) => {
+  const newArticle = createArticle(item);
+    newComponents.forEach(item => {
+    parent.appendChild(item);
+  });
+  return newArticle;
+});
+
+
