@@ -147,7 +147,7 @@ panelContent_2.textContent = secondParagraph;
 panelContent_3.textContent = thirdParagraph;
 
 // Add message for more content
-panelSpan.textContent = "Click here to read or close this article!";
+panelSpan.textContent = "Read More";
 
 // Add classlist to sections
 panel.classList.add('article');
@@ -157,6 +157,11 @@ panelSpan.classList.add('expandButton');
 // Add click/toggle effect for content
 panel.addEventListener('click', () => {
   panel.classList.toggle('article-open');
+  if(panelSpan.innerText === "Read More") {
+    panelSpan.innerText = "Close";
+  } else {
+    panelSpan.innerText = "Read More";
+  };
 });
 
 // return the whole component
