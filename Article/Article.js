@@ -85,10 +85,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Cats take over Manhattan - More news at 11',
+    date: 'Nov 5th, 2019',
+    firstParagraph: `Nap all day cat dog hate mouse eat string barf pillow no baths hate everything but kitty poochy. Sleep on keyboard toy mouse squeak roll over. Mesmerizing birds. Poop on grasses licks paws destroy couch intently sniff hand. The dog smells bad gnaw the corn cob. `,
+
+    secondParagraph: `Plays league of legends stare out the window. Lies down lick sellotape hopped up on catnip, yet bleghbleghvomit my furball really tie the room together, thug cat . Play riveting piece on synthesizer keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep on the washing machine hide when guests come over stare at guinea pigs yet vommit food and eat it again eat and than sleep on your face. Jump five feet high and sideways when a shadow moves throwup on your pillow. Missing until dinner time.`,
+
+    thirdParagraph: ` Pet right here, no not there, here, no fool, right here that other cat smells funny you should really give me all the treats because i smell the best and omg you finally got the right spot and i love you right now nap all day flop over, so missing until dinner time, for see owner, run in terror sun bathe. Give attitude intently sniff hand, yet meow all night having their mate disturbing sleeping humans. Lounge in doorway chase imaginary bugs. `
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* **Complete** Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -103,12 +112,82 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  **Complete** Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+  **Complete** Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  **Complete** Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  **Complete** Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+// create elements
+let panel = document.createElement('div');
+let panelTitle = document.createElement('h2');
+let panelDate = document.createElement('p');
+let panelContent_1 = document.createElement('p');
+let panelContent_2 = document.createElement('p');
+let panelContent_3 = document.createElement('p');
+let panelSpan = document.createElement('button');
+
+// add elements to the parent
+panel.appendChild(panelTitle);
+panel.appendChild(panelDate);
+panel.appendChild(panelContent_1);
+panel.appendChild(panelContent_2);
+panel.appendChild(panelContent_3);
+panel.appendChild(panelSpan);
+
+// link to parameters in the function
+panelTitle.textContent = title;
+panelDate.textContent = date;
+panelContent_1.textContent = firstParagraph;
+panelContent_2.textContent = secondParagraph;
+panelContent_3.textContent = thirdParagraph;
+
+// Add message for more content
+panelSpan.textContent = "Read More";
+panelSpan.style.marginBottom = "5px";
+panelSpan.style.backgroundColor = "#388E3C";
+panelSpan.style.color = "white";
+
+// Add classlist to sections
+panel.classList.add('article');
+panelDate.classList.add('date');
+panelSpan.classList.add('expandButton');
+
+// Add click/toggle effect for content
+panel.addEventListener('click', () => {
+  panel.classList.toggle('article-open');
+  if(panelSpan.innerText === "Read More") {
+    panelSpan.innerText = "Close";
+  } else {
+    panelSpan.innerText = "Read More";
+  };
+});
+
+// return the whole component
+return panel;
+
+};
+
+// set input data array
+const parent = document.querySelector('.articles');
+data.forEach(data => {
+  const newData = createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
+  parent.appendChild(newData);
+});
+
+// map array to make new articles
+let newComponents = [];
+newComponents = data.map(item => {
+  let newArticle = createArticle(item);
+  newComponents.forEach(item => {
+    parent.appendChild(item);
+    return newArticle;
+  });
+  
+});
+
+ 
