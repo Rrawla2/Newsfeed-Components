@@ -129,7 +129,7 @@ let panelDate = document.createElement('p');
 let panelContent_1 = document.createElement('p');
 let panelContent_2 = document.createElement('p');
 let panelContent_3 = document.createElement('p');
-let panelSpan = document.createElement('span');
+let panelSpan = document.createElement('button');
 
 // add elements to the parent
 panel.appendChild(panelTitle);
@@ -148,6 +148,9 @@ panelContent_3.textContent = thirdParagraph;
 
 // Add message for more content
 panelSpan.textContent = "Read More";
+panelSpan.style.marginBottom = "5px";
+panelSpan.style.backgroundColor = "#388E3C";
+panelSpan.style.color = "white";
 
 // Add classlist to sections
 panel.classList.add('article');
