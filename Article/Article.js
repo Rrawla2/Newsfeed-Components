@@ -147,7 +147,7 @@ panelContent_2.textContent = secondParagraph;
 panelContent_3.textContent = thirdParagraph;
 
 // Add message for more content
-panelSpan.textContent = "Click here to read this article!";
+panelSpan.textContent = "Click here to read or close this article!";
 
 // Add classlist to sections
 panel.classList.add('article');
