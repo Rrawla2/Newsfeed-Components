@@ -40,7 +40,8 @@ function createMenu(array) {
   // add menu open with click
   const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', () => {
-    menu.classList.toggle('menu--open');    
+    menu.classList.toggle('menu--open');
+    
   });
   
 
